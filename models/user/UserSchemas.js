@@ -4,8 +4,9 @@ const userSchema = mongoose.Schema({
   role: {
     type: String,
     required: true,
+    default: "admin",
   },
-  name: {
+  fName: {
     type: String,
     required: true,
   },
