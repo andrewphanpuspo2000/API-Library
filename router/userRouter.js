@@ -1,16 +1,30 @@
 import express from "express";
-import { insertData } from "../models/user/UserModel.js";
-import { hashPassword } from "../utils/bcrypt.js";
+import { getData, insertData } from "../models/user/UserModel.js";
+import { checkPassword, hashPassword } from "../utils/bcrypt.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    console.log(req.body);
+    const { email, password } = req.query;
+    const result = await getData({ email });
+    if (result.length) {
+      result.map((item, i) => {
+        let check = checkPassword(password, item.password);
+        console.log(check);
+        if (check) {
+          res.json({
+            status: "success",
+            message: result,
+          });
+        }
+        return;
+      });
+    }
     res.json({
-      status: "success",
-      message: "data is received",
+      status: "fail",
     });
+    console.log(result);
   } catch (error) {
     console.log(error.message);
   }

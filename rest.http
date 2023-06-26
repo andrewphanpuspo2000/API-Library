@@ -6,6 +6,16 @@
 GET {{rootApi}}
 
 ###
+GET {{userApi}}
+Content-Type: application/json
+
+{
+    "email":"1234@gmail.com",
+    "password":"1234"
+    
+}
+
+###
 POST {{userApi}}
 Content-Type: application/json
 
