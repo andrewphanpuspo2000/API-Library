@@ -8,25 +8,23 @@ router.get("/", async (req, res) => {
   try {
     const { email, password } = req.query;
     const result = await getData({ email });
-    if (result.length) {
-      result.map((item, i) => {
-        let check = checkPassword(password, item.password);
-        console.log(check);
-        if (check) {
-          res.json({
-            status: "success",
-            message: result,
-          });
-        }
-        return;
-      });
-    }
-    res.json({
-      status: "fail",
-    });
-    console.log(result);
+    const checkPass = checkPassword(password, result.password);
+    console.log(checkPass);
+    checkPass
+      ? res.json({
+          status: "success",
+          message: "Login success",
+        })
+      : res.json({
+          status: "fail",
+          message: "Password is not valid",
+        });
   } catch (error) {
     console.log(error.message);
+    res.json({
+      status: "fail",
+      message: "Email is not valid",
+    });
   }
 });
 router.post("/", async (req, res) => {

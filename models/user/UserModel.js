@@ -5,5 +5,5 @@ export const insertData = (obj) => {
 };
 
 export const getData = (item) => {
-  return userSchema.find(item);
+  return userSchema.findOne(item);
 };

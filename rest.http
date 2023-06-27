@@ -10,7 +10,7 @@ GET {{userApi}}
 Content-Type: application/json
 
 {
-    "email":"1234@gmail.com",
+    "email":"abcd@gmail.com",
     "password":"1234"
     
 }
@@ -21,10 +21,10 @@ Content-Type: application/json
 
 {
     "role":"admin",
-    "name":"Andrew",
+    "fName":"Andrew",
     "lName":"PP",
     "phone":"983647",
     "address":"somewhere in Sydney",
-     "email": "asja@gmail",
-     "password":"123"
+     "email": "abcd@gmail.com",
+     "password":"1234"
 }

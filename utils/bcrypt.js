@@ -7,5 +7,7 @@ export const hashPassword = (plainPassword) => {
 };
 
 export const checkPassword = (pass, compPass) => {
-  return bcrypt.compareSync(pass, compPass);
+  const compare = bcrypt.compareSync(pass, compPass);
+
+  return compare;
 };
