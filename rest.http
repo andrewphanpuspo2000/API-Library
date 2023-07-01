@@ -6,7 +6,7 @@
 GET {{rootApi}}
 
 ###
-GET {{userApi}}
+GET {{userApi}}/login
 Content-Type: application/json
 
 {

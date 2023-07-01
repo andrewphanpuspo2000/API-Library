@@ -1,24 +1,31 @@
 import express from "express";
-import { getData, insertData } from "../models/user/UserModel.js";
+import { getUserByEmail, insertData } from "../models/user/UserModel.js";
 import { checkPassword, hashPassword } from "../utils/bcrypt.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/login", async (req, res) => {
   try {
+    // get the data to compare the password with password from email in database
+    // if it is match we can return success confirmation
     const { email, password } = req.query;
-    const result = await getData({ email });
-    const checkPass = checkPassword(password, result.password);
-    console.log(checkPass);
-    checkPass
-      ? res.json({
-          status: "success",
-          message: "Login success",
-        })
-      : res.json({
-          status: "fail",
-          message: "Password is not valid",
-        });
+    const result = await getUserByEmail({ email });
+
+    if (result._id) {
+      const checkPass = checkPassword(password, result.password);
+      result.password = undefined;
+      console.log(checkPass);
+      checkPass
+        ? res.json({
+            status: "success",
+            message: "Login success",
+            user: result,
+          })
+        : res.json({
+            status: "error",
+            message: "Password is not valid",
+          });
+    }
   } catch (error) {
     console.log(error.message);
     res.json({
