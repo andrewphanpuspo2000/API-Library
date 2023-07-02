@@ -1,0 +1,88 @@
+import express from "express";
+import {
+  deleteBook,
+  getAllBooks,
+  storeBook,
+  updateBook,
+} from "../bookModel/bookModel.js";
+
+const router = express.Router();
+
+router.post("/", async (req, res) => {
+  try {
+    const result = await storeBook(req.body);
+
+    result?.id
+      ? res.json({
+          status: "success",
+          message: "new book has been added",
+        })
+      : json({
+          status: "error",
+          message: "Error, can not add book ",
+        });
+    console.log(req.body);
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const result = await getAllBooks();
+    res.json({
+      status: "success",
+      message: "success to get books",
+      books: result,
+    });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
+});
+
+router.put("/", async (req, res) => {
+  try {
+    const { _id, ...rest } = req.body;
+    const result = await updateBook(_id, rest);
+
+    result?._id
+      ? res.json({
+          status: "success",
+          message: "data has been updated",
+        })
+      : res.json({
+          status: "fail",
+          message: "data is not stored",
+        });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
+});
+
+router.delete("/:_id", async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const result = await deleteBook(_id);
+    console.log(result);
+    res.json({
+      status: "success",
+      message: "Book has been deleted",
+    });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
+});
+
+export default router;

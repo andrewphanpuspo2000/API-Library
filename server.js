@@ -7,6 +7,7 @@ dotenv.config();
 import mongoConnect from "./config/mongoConnect.js";
 import express from "express";
 import userRouter from "./router/userRouter.js";
+import bookrouter from "./router/bookRouter.js";
 const app = express();
 
 const PORT = process.env.PORT || 8000;
@@ -17,7 +18,8 @@ app.use(cors());
 mongoConnect();
 //api
 app.use("/api/v1/user", userRouter);
-
+app.use("/api/v1/book", bookrouter);
+//root router
 app.use("/", (req, res) => {
   res.json({
     status: "succes",
