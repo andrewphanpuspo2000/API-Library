@@ -1,6 +1,7 @@
 import express from "express";
 import {
   deleteBook,
+  findBook,
   getAllBooks,
   storeBook,
   updateBook,
@@ -77,6 +78,29 @@ router.delete("/:_id", async (req, res) => {
       status: "success",
       message: "Book has been deleted",
     });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
+});
+
+router.post("/search/:search", async (req, res) => {
+  try {
+    const { search } = req.params;
+    const result = await findBook(search);
+
+    result
+      ? res.json({
+          status: "success",
+          count: result.length,
+          message: result,
+        })
+      : res.json({
+          status: "error",
+          message: result,
+        });
   } catch (error) {
     res.json({
       status: "error",
