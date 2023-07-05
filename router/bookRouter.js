@@ -94,7 +94,6 @@ router.post("/search/:search", async (req, res) => {
     result
       ? res.json({
           status: "success",
-          count: result.length,
           message: result,
         })
       : res.json({

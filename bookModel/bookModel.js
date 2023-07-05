@@ -18,7 +18,7 @@ export const deleteBook = (id) => {
 
 export const findBook = async (search) => {
   const bookCol = await bookSchema.find();
-  console.log(bookCol);
+  // console.log(bookCol);
   const searchRes = bookCol.filter((item) => item.title.includes(search));
 
   return searchRes;

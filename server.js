@@ -22,7 +22,7 @@ app.use("/api/v1/book", bookrouter);
 //root router
 app.use("/", (req, res) => {
   res.json({
-    status: "succes",
+    status: "success",
     message: "api is running",
   });
 });
