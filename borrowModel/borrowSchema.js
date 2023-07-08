@@ -1,38 +1,34 @@
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 
-const bookSchema = mongoose.Schema({
-  status: {
-    type: String,
-    required: true,
-    default: "inactive",
-  },
-  title: {
+const borrowSchema = mongoose.Schema({
+  bookId: {
     type: String,
     required: true,
   },
-  author: {
+  bookName: {
     type: String,
-    required: true,
-  },
-  year: {
-    type: Number,
     required: true,
   },
   thumbnail: {
     type: String,
     required: true,
   },
-  summary: {
+  userId: {
     type: String,
     required: true,
   },
-  isAvailable: {
-    type: Boolean,
-    default: true,
+  userName: {
+    type: String,
+    required: true,
   },
   dueDate: {
     type: Date,
+    required: true,
     default: null,
+  },
+  isReturned: {
+    type: Boolean,
+    required: false,
   },
   returnDate: {
     type: Date,
@@ -40,4 +36,4 @@ const bookSchema = mongoose.Schema({
   },
 });
 
-export default mongoose.model("Book", bookSchema);
+export default mongoose.model("Borrow", borrowSchema);

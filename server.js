@@ -8,6 +8,7 @@ import mongoConnect from "./config/mongoConnect.js";
 import express from "express";
 import userRouter from "./router/userRouter.js";
 import bookrouter from "./router/bookRouter.js";
+import borrowrouter from "./router/borrowRouter.js";
 const app = express();
 
 const PORT = process.env.PORT || 8000;
@@ -19,6 +20,7 @@ mongoConnect();
 //api
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/book", bookrouter);
+app.use("/api/v1/borrow", borrowrouter);
 //root router
 app.use("/", (req, res) => {
   res.json({

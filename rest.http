@@ -6,6 +6,8 @@
 
 @searchBook={{bookApi}}/search
 ###
+@borrowBook={{rootApi}}/api/v1/borrow
+###
 GET {{rootApi}}
 
 ###
@@ -52,3 +54,15 @@ DELETE {{bookApi}}/64a0eddb5c36c19358893103
 
 ### search book
 POST {{searchBook}}/s
+
+###
+POST {{borrowBook}}
+Content-Type: application/json
+
+{
+         "bookId": "adsf",
+          "bookName": "new",
+          "thumbnail":"sdakimdk.com",
+          "userId": "dasa",
+          "userName": "rizz"
+}
