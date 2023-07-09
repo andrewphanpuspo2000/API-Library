@@ -6,10 +6,11 @@ import {
   storeBook,
   updateBook,
 } from "../bookModel/bookModel.js";
+import { adminAuth, auth } from "../AuthMiddleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", auth, adminAuth, async (req, res) => {
   try {
     const result = await storeBook(req.body);
 
@@ -47,7 +48,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.put("/", async (req, res) => {
+router.put("/", auth, adminAuth, async (req, res) => {
   try {
     const { _id, ...rest } = req.body;
     const result = await updateBook(_id, rest);
@@ -69,7 +70,7 @@ router.put("/", async (req, res) => {
   }
 });
 
-router.delete("/:_id", async (req, res) => {
+router.delete("/:_id", auth, adminAuth, async (req, res) => {
   try {
     const { _id } = req.params;
     const result = await deleteBook(_id);

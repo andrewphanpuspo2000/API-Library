@@ -9,7 +9,6 @@
 @borrowBook={{rootApi}}/api/v1/borrow
 ###
 GET {{rootApi}}
-
 ###
 GET {{userApi}}/login
 Content-Type: application/json
@@ -33,6 +32,10 @@ Content-Type: application/json
      "email": "abcd@gmail.com",
      "password":"1234"
 }
+###
+GET {{borrowBook}}
+Authorization: 6498fa2bb637187ddfae76a3
+
 
 ###
 POST {{bookApi}}

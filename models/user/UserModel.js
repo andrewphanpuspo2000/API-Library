@@ -7,3 +7,6 @@ export const insertData = (obj) => {
 export const getUserByEmail = (item) => {
   return userSchema.findOne(item);
 };
+export const getUserById = (item) => {
+  return userSchema.findById(item);
+};
