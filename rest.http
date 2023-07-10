@@ -7,6 +7,8 @@
 @searchBook={{bookApi}}/search
 ###
 @borrowBook={{rootApi}}/api/v1/borrow
+
+@comment={{rootApi}}/api/v1/comment
 ###
 GET {{rootApi}}
 ###
@@ -68,4 +70,17 @@ Content-Type: application/json
           "thumbnail":"sdakimdk.com",
           "userId": "dasa",
           "userName": "rizz"
+}
+
+###
+GET {{comment}}
+###
+POST {{comment}}
+Content-Type: application/json
+
+{
+  "bookId":"64a8f6d025d31745d223d71b",
+   "userId":"6498fa2bb637187ddfae76a3",
+   "userName":"dsasfds",
+   "comment":"Very interisting"
 }

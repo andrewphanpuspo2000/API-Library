@@ -10,6 +10,8 @@ import userRouter from "./router/userRouter.js";
 import bookrouter from "./router/bookRouter.js";
 import borrowrouter from "./router/borrowRouter.js";
 import { auth } from "./AuthMiddleware/authMiddleware.js";
+import commentRouter from "./router/commentRouter.js";
+
 const app = express();
 
 const PORT = process.env.PORT || 8000;
@@ -22,6 +24,7 @@ mongoConnect();
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/book", bookrouter);
 app.use("/api/v1/borrow", auth, borrowrouter);
+app.use("/api/v1/comment", commentRouter);
 //root router
 app.use("/", (req, res) => {
   res.json({
