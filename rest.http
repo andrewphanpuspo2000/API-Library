@@ -36,7 +36,7 @@ Content-Type: application/json
 }
 ###
 GET {{borrowBook}}
-Authorization: 6498fa2bb637187ddfae76a3
+Authorization: 64aa858df9a66456268c9af6
 
 
 ###
@@ -74,6 +74,11 @@ Content-Type: application/json
 
 ###
 GET {{comment}}
+Authorization: 64aa858df9a66456268c9af6
+
+
+
+
 ###
 POST {{comment}}
 Content-Type: application/json

@@ -7,3 +7,7 @@ export const addComment = (comment) => {
 export const getAllComment = () => {
   return commentSchema.find();
 };
+
+export const updateComment = (id, data) => {
+  return commentSchema.findByIdAndUpdate(id, data);
+};

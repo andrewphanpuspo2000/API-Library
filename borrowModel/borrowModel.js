@@ -7,7 +7,7 @@ export const addBorrow = (item) => {
 export const getAllBorrow = () => {
   return borrowSchema.find();
 };
-export const getBurrowbyUserId = (id) => {
+export const getBorrowbyUserId = (id) => {
   return borrowSchema.find({ userId: id });
 };
 export const updateBorrowByBookId = (id, obj) => {

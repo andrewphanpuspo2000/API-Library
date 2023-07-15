@@ -3,6 +3,7 @@ import {
   addBorrow,
   findBorrowById,
   getAllBorrow,
+  getBorrowbyUserId,
   updateBorrow,
 } from "../borrowModel/borrowModel.js";
 import { updateBook } from "../bookModel/bookModel.js";
@@ -44,7 +45,7 @@ router.get("/", async (req, res) => {
     const { role, _id } = req.userInfo;
 
     const collection =
-      role === "admin" ? await getAllBorrow() : await getBurrowbyUserId(_id);
+      role === "admin" ? await getAllBorrow() : await getBorrowbyUserId(_id);
 
     if (collection.length) {
       res.json({
