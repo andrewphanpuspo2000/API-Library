@@ -31,7 +31,7 @@ app.use("/api/v1/borrow", auth, borrowrouter);
 app.use("/api/v1/comment", commentRouter);
 //send file
 app.use("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/build/index.html");
 });
 
 //database connection in cyclic
