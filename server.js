@@ -19,6 +19,10 @@ const PORT = process.env.PORT || 8000;
 console.log(__dirname);
 //middleware
 app.use(express.static(__dirname + "/build"));
+app.use("/", (req, res) => {
+  res.sendFile(__dirname + "/build/index.html");
+});
+
 console.log("dirname" + __dirname);
 app.use(morgan());
 app.use(express.json());
@@ -30,9 +34,6 @@ app.use("/api/v1/book", bookrouter);
 app.use("/api/v1/borrow", auth, borrowrouter);
 app.use("/api/v1/comment", commentRouter);
 //send file
-app.use("/", (req, res) => {
-  res.sendFile(__dirname + "/build/index.html");
-});
 
 //database connection in cyclic
 // const db =
