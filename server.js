@@ -30,9 +30,9 @@ app.use("/api/v1/book", bookrouter);
 app.use("/api/v1/borrow", auth, borrowrouter);
 app.use("/api/v1/comment", commentRouter);
 //send file
-// app.use("/", (req, res) => {
-//   res.sendFile(__dirname + "/index.html");
-// });
+app.use("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
 
 //database connection in cyclic
 // const db =
