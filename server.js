@@ -56,22 +56,22 @@ mongoose
   });
 
 //root router
-app.use("/", (req, res) => {
-  res.json({
-    status: "success",
-    message: "api is running",
-  });
-});
+// app.use("/", (req, res) => {
+//   res.json({
+//     status: "success",
+//     message: "api is running",
+//   });
+// });
 
-app.use("/", (req, res) => {
-  res.json({
-    status: "success",
-    message: "server is running properly",
-  });
-});
+// app.use("/", (req, res) => {
+//   res.json({
+//     status: "success",
+//     message: "server is running properly",
+//   });
+// });
 
-app.listen(PORT, (error) => {
-  error
-    ? console.log(error.message)
-    : console.log(`server is running on port ${PORT}`);
-});
+// app.listen(PORT, (error) => {
+//   error
+//     ? console.log(error.message)
+//     : console.log(`server is running on port ${PORT}`);
+// });
