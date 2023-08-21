@@ -56,12 +56,12 @@ mongoose
   });
 
 //root router
-app.use("/", (req, res) => {
-  res.json({
-    status: "success",
-    message: "api is running",
-  });
-});
+// app.use("/", (req, res) => {
+//   res.json({
+//     status: "success",
+//     message: "api is running",
+//   });
+// });
 
 // app.use("/", (req, res) => {
 //   res.json({
