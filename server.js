@@ -30,7 +30,7 @@ app.use("/api/v1/book", bookrouter);
 app.use("/api/v1/borrow", auth, borrowrouter);
 app.use("/api/v1/comment", commentRouter);
 //send file
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(__dirname + "/build"));
 app.use("/", (req, res) => {
   // console.log("root directory" + __dirname);
   res.sendFile(__dirname + "/index.html");
