@@ -71,8 +71,8 @@ mongoose
 //   });
 // });
 
-app.listen(PORT, (error) => {
-  error
-    ? console.log(error.message)
-    : console.log(`server is running on port ${PORT}`);
-});
+// app.listen(PORT, (error) => {
+//   error
+//     ? console.log(error.message)
+//     : console.log(`server is running on port ${PORT}`);
+// });
