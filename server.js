@@ -48,7 +48,7 @@ mongoose
       console.log("Connected to port");
       error
         ? console.log(error.message)
-        : console.log(`server run in port http://localhost:${PORT}`);
+        : console.log(`server run in port  http://localhost:${PORT}`);
     });
   })
   .catch((error) => {
