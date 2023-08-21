@@ -32,8 +32,8 @@ app.use("/api/v1/comment", commentRouter);
 //send file
 app.use(express.static(__dirname + "/build"));
 app.use("/", (req, res) => {
+  console.log("root directory" + __dirname);
   res.sendFile(__dirname + "/index.html");
-  console.log(__dirname);
 });
 //database connection in cyclic
 // const db =
