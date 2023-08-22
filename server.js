@@ -42,9 +42,7 @@ app.use("/", (req, res) => {
 //     : "mongodb://localhost:27017/nottododb";
 
 mongoose
-  .connect(
-    "mongodb+srv://andrew:CZkIMexbFvWb23Tx@library.pv7md5i.mongodb.net/Library?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_CLIENT)
   .then(() => {
     console.log("Connected to mongo");
     app.listen(PORT, (error) => {
