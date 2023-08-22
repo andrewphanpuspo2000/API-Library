@@ -32,7 +32,7 @@ app.use("/api/v1/comment", commentRouter);
 //send file
 app.use(express.static(__dirname + "/build"));
 app.use("/", async (req, res) => {
-  await mongoose
+  const db = await mongoose
     .connect(process.env.MONGO_CLIENT)
     .then(() => {
       console.log("Connected to mongo");
@@ -46,6 +46,7 @@ app.use("/", async (req, res) => {
     .catch((error) => {
       console.log(error.message);
     });
+  console.log(db);
   // console.log("root directory" + __dirname);
   res.sendFile(__dirname + "/build/index.html");
 });
