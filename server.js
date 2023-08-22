@@ -46,7 +46,7 @@ app.use("/", async (req, res) => {
       })
 
       .catch((error) => {
-        console.log(error.message);
+        console.log("db error: " + error.message);
       });
     console.log(db);
     // console.log("root directory" + __dirname);
