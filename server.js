@@ -31,7 +31,21 @@ app.use("/api/v1/borrow", auth, borrowrouter);
 app.use("/api/v1/comment", commentRouter);
 //send file
 app.use(express.static(__dirname + "/build"));
-app.use("/", (req, res) => {
+app.use("/", async (req, res) => {
+  await mongoose
+    .connect(process.env.MONGO_CLIENT)
+    .then(() => {
+      console.log("Connected to mongo");
+      app.listen(PORT, (error) => {
+        console.log("Connected to port");
+        error
+          ? console.log(error.message)
+          : console.log(`server run in port  http://localhost:${PORT}`);
+      });
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
   // console.log("root directory" + __dirname);
   res.sendFile(__dirname + "/build/index.html");
 });
@@ -40,21 +54,6 @@ app.use("/", (req, res) => {
 //   process.env.NODE_ENV === "production"
 //     ? process.env.MONGO_CLIENT
 //     : "mongodb://localhost:27017/nottododb";
-
-mongoose
-  .connect(process.env.MONGO_CLIENT)
-  .then(() => {
-    console.log("Connected to mongo");
-    app.listen(PORT, (error) => {
-      console.log("Connected to port");
-      error
-        ? console.log(error.message)
-        : console.log(`server run in port  http://localhost:${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.log(error.message);
-  });
 
 //root router
 // app.use("/", (req, res) => {
