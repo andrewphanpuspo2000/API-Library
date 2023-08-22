@@ -30,10 +30,10 @@ app.use("/api/v1/book", bookrouter);
 app.use("/api/v1/borrow", auth, borrowrouter);
 app.use("/api/v1/comment", commentRouter);
 //send file
-app.use(express.static(path.join(__dirname, "./api/build")));
+app.use(express.static(__dirname + "/build"));
 app.use("/", (req, res) => {
   // console.log("root directory" + __dirname);
-  res.sendFile(path.join(__dirname, "./api/build/index.html"));
+  res.sendFile(__dirname + "/build/index.html");
 });
 //database connection in cyclic
 // const db =
