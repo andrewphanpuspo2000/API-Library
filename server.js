@@ -31,29 +31,9 @@ app.use("/api/v1/borrow", auth, borrowrouter);
 app.use("/api/v1/comment", commentRouter);
 //send file
 app.use(express.static(__dirname + "/build"));
-app.use("/", async (req, res) => {
-  try {
-    const db = await mongoose
-      .connect(process.env.MONGO_CLIENT)
-      .then(() => {
-        console.log("Connected to mongo");
-        app.listen(PORT, (error) => {
-          console.log("Connected to port");
-          error
-            ? console.log(error.message)
-            : console.log(`server run in port  http://localhost:${PORT}`);
-        });
-      })
-
-      .catch((error) => {
-        console.log("db error: " + error.message);
-      });
-    console.log(db);
-    // console.log("root directory" + __dirname);
-    res.sendFile(__dirname + "/build/index.html");
-  } catch (err) {
-    console.log(err.message);
-  }
+app.use("/", (req, res) => {
+  // console.log("root directory" + __dirname);
+  res.sendFile(__dirname + "/build/index.html");
 });
 //database connection in cyclic
 // const db =
@@ -75,6 +55,22 @@ app.use("/", async (req, res) => {
 //     message: "server is running properly",
 //   });
 // });
+
+mongoose
+  .connect(process.env.MONGO_CLIENT)
+  .then(() => {
+    console.log("Connected to mongo");
+    app.listen(PORT, (error) => {
+      console.log("Connected to port");
+      error
+        ? console.log(error.message)
+        : console.log(`server run in port  http://localhost:${PORT}`);
+    });
+  })
+
+  .catch((error) => {
+    console.log("db error: " + error.message);
+  });
 
 app.listen(PORT, (error) => {
   error
